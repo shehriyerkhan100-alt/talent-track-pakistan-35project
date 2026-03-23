@@ -1,0 +1,658 @@
+/* --- 1. RESET & BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f4f7; /* Professional Soft Grey */
+    color: #333;
+}
+/* --- NAYA AUR SAHI CODE --- */
+.site-container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row; /* Desktop par side-by-side */
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #1c2833;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0;
+    flex-shrink: 0; /* Sidebar ko dabne nahi dega */
+}
+
+.content-area {
+    flex-grow: 1; /* YE SABSE ZAROORI HAI: Poori screen cover karega */
+    padding: 30px;
+    background-color: #f0f4f7;
+    width: 100%;
+}
+.menu-label {
+    padding-left: 25px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #85929e;
+    margin-bottom: 30px;
+}
+
+.sidebar ul {
+    list-style: none;
+    flex-grow: 1;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 15px 25px;
+    color: #d5d8dc;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+    border-left: 4px solid transparent;
+}
+
+.sidebar ul li a:hover, .sidebar ul li a.active {
+    background-color: #2c3e50;
+    color: #3498db;
+    border-left: 4px solid #3498db;
+}
+
+.sidebar-footer {
+    text-align: center;
+    font-size: 11px;
+    color: #566573;
+}
+
+
+
+/* --- 4. TOP HEADER (Title Left, Logo Right) --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 20px 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.brand-name {
+    font-size: 28px;
+    font-weight: 800;
+    color: #212f3d;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    background: linear-gradient(to right, #2c3e50, #3498db);
+    
+    /* Pehle se likhi hui lines */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* YE WALI LINE ADD KAREIN WARNING KHATAM KARNE KE LIYE */
+    background-clip: text; 
+}
+.tagline {
+    font-size: 14px;
+    color: #2ecc71; /* Green highlight */
+    font-weight: 600;
+    margin: 0;
+}
+
+.top-right-logo {
+    height: 85px;
+    width: auto;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+
+/* --- 5. SLIDER DESIGN --- */
+.slider-wrapper {
+    width: 100%;
+    max-width: 700px;
+    height: 500px;
+    margin: 40px auto;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    background-color: white;
+}
+
+.image-slider {
+    display: flex;
+    width: 400%;
+    height: 100%;
+    animation: move-slides 18s infinite ease-in-out;
+}
+
+.slide-img {
+    width: 25%;
+    height: 100%;
+    object-fit: cover; /* Puri image dikhegi bina kate */
+    background: #fff;
+}
+
+@keyframes move-slides {
+    0%, 20% { transform: translateX(0); }
+    25%, 45% { transform: translateX(-25%); }
+    50%, 70% { transform: translateX(-50%); }
+    75%, 95% { transform: translateX(-75%); }
+    100% { transform: translateX(0); }
+}
+
+/* --- 6. APPLY BUTTON --- */
+.action-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.apply-btn {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    color: white;
+    padding: 16px 50px;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(39, 174, 96, 0.3);
+    transition: 0.3s;
+}
+
+.apply-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(39, 174, 96, 0.4);
+}
+/* --- 7. PARTNERS LOGO STRIP (Original Rang Effect) --- */
+.partners-strip {
+    display: flex;
+    justify-content: center; /* Logos center mein */
+    align-items: center;     /* Upar niche se barabar */
+    gap: 30px;               /* Fasla logos ke darmiyan */
+    margin: 40px auto;       /* Slider se niche gap */
+    padding: 20px;
+    background: #ffffff;     /* White strip */
+    border-radius: 12px;
+    max-width: 950px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.logo-item {
+    flex: 1;                 /* Barabar jagah */
+    text-align: center;
+}
+
+.logo-item img {
+    height: 80px;            /* Sab barabar size ke */
+    width: auto;
+    object-fit: contain;
+    transition: all 0.3s ease; /* Smooth effect */
+    
+    /* !! YE LINES CHANGE KI HAIN !! */
+    filter: grayscale(0%);   /* Original State: Hamesha rang mein rahenge */
+    opacity: 1;              /* Hamesha saaf dikhenge */
+}
+
+/* Mouse le jane par ka Effect (Inverted) */
+.logo-item img:hover {
+    filter: grayscale(100%); /* Hover par range grey/feeka ho jayega */
+    opacity: 0.8;            /* Halka sa feeka background jaisa professional look */
+    transform: scale(1.1);   /* Halka sa zoom takae pata chale mouse wahan hai */
+}
+/* --- 8. CONTACT PAGE SPECIFIC STYLES --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Info choti, Form bada */
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.contact-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.contact-card h3 {
+    color: #1c2833;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #2ecc71;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.info-box p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.info-box i {
+    color: #3498db;
+    margin-right: 10px;
+}
+
+/* Form Styling */
+.form-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-box input, .form-box textarea {
+    padding: 12px;
+    border: 1px solid #d5d8dc;
+    border-radius: 8px;
+    font-family: inherit;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-box input:focus, .form-box textarea:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.2);
+}
+
+.submit-btn {
+    background: #1c2833;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background: #3498db;
+}
+
+.map-container {
+    margin-top: 40px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.dummy-map {
+    height: 300px;
+    background: #e5e8e8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    color: #7f8c8d;
+    border: 2px dashed #bdc3c7;
+}
+/* --- 9. FLOATING WHATSAPP BUTTON --- */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366; /* WhatsApp Green */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    background-color: #128c7e;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-float span {
+    font-size: 14px;
+}
+
+
+    .whatsapp-float {
+        padding: 12px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+/* --- 11. COURSE OFFER DESIGN --- */
+.courses-container {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 32px;
+    color: #1c2833;
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+}
+
+.page-title::after {
+    content: '';
+    width: 50%;
+    height: 4px;
+    background: #3498db;
+    position: absolute;
+    bottom: -10px;
+    left: 25%;
+    border-radius: 2px;
+}
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.course-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.course-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(52, 152, 219, 0.15);
+    border-color: #3498db;
+}
+
+.course-icon {
+    font-size: 40px;
+    color: #3498db;
+    margin-bottom: 20px;
+}
+
+.course-card h3 {
+    font-size: 22px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.course-card p {
+    color: #7f8c8d;
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.course-meta {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+    color: #95a5a6;
+    font-size: 13px;
+}
+
+.enroll-btn {
+    background: #1c2833;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.enroll-btn:hover {
+    background: #3498db;
+    color: white;
+}
+/* --- 12. ABOUT PAGE INFO --- */
+.about-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.about-card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    border-left: 5px solid #2ecc71; /* Green highlight */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.about-card h3 {
+    color: #1c2833;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.about-card i {
+    color: #3498db;
+}
+ 
+/* --- ADMISSION FORM NEW DESIGN --- */
+.admission-box {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    max-width: 900px; /* Is se form bada dikhega */
+    margin: 20px auto;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 15px;
+}
+
+.form-header h2 {
+    color: #1c2833;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+.form-row {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 20px;
+}
+
+.field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.field label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #34495e;
+}
+
+.field input, .field select, .field textarea {
+    padding: 12px;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    font-size: 16px;
+    background: #fdfefe;
+}
+
+.field input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+.apply-now-btn {
+    width: 100%;
+    padding: 15px;
+    background: #1c2833;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.apply-now-btn:hover {
+    background: #3498db;
+    transform: translateY(-2px);
+}
+.moving-box {
+    width: 250px;
+    padding: 10px;
+    background: #222; /* Dabbe ka andar ka rang thora dark rakha hai */
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    
+    /* Border Settings */
+    border: 4px solid #ff0000; /* Shuruati border color */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); /* Halka sa glow */
+
+    /* Animation Settings */
+    position: relative;
+    animation: moveLeftRight 8s linear infinite, borderRainbow 4s linear infinite;
+}
+
+/* Agay Peechay Chalne wali Animation */
+@keyframes moveLeftRight {
+    0%   { left: 0%; transform: translateX(0); }
+    50%  { left: 100%; transform: translateX(-100%); }
+    100% { left: 0%; transform: translateX(0); }
+}
+
+/* Border ka Rang Badalna (Rainbow Effect) */
+@keyframes borderRainbow {
+    0%   { border-color: #ff0000; box-shadow: 0 0 20px #ff0000; } /* Red */
+    20%  { border-color: #ff8000; box-shadow: 0 0 20px #ff8000; } /* Orange */
+    40%  { border-color: #ffff00; box-shadow: 0 0 20px #ffff00; } /* Yellow */
+    60%  { border-color: #00ff00; box-shadow: 0 0 20px #00ff00; } /* Green */
+    80%  { border-color: #0000ff; box-shadow: 0 0 20px #0000ff; } /* Blue */
+    100% { border-color: #ff0000; box-shadow: 0 0 20px #ff0000; } /* Back to Red */
+}
+/* ============================================================
+   MOBILE RESPONSIVE CODE (Sirf Mobile ke liye)
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /* 1. Layout Fix: Sidebar ko upar shift karna */
+    .site-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    .sidebar ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .sidebar ul li a {
+        padding: 10px 15px;
+        font-size: 13px;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+    }
+
+    .sidebar ul li a:hover, .sidebar ul li a.active {
+        border-left: none;
+        border-bottom: 3px solid #3498db;
+    }
+
+    /* 2. Header Fix: Logo aur Title upar niche */
+    .main-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .top-right-logo {
+        height: 60px;
+        margin-top: 15px;
+    }
+
+    .brand-name {
+        font-size: 22px;
+    }
+
+    /* 3. Slider Fix: Height kam karna taake kategi nahi */
+    .slider-wrapper {
+        height: 250px;
+        margin: 20px auto;
+    }
+
+    /* 4. Rainbow Box Fix: Size chota karna */
+    .moving-box {
+        width: 180px;
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    /* 5. Grids Fix: Har cheez aik ke niche aik aye */
+    .contact-grid, 
+    .about-info-grid, 
+    .course-grid,
+    .admission-box {
+        grid-template-columns: 1fr !important;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    /* 6. Partners Strip Fix */
+    .partners-strip {
+        gap: 15px;
+        padding: 10px;
+    }
+
+    .logo-item img {
+        height: 50px;
+    }
+
+    /* 7. WhatsApp Button Fix */
+    .whatsapp-float span {
+        display: none; /* Mobile par sirf icon dikhega */
+    }
+    
+    .whatsapp-float {
+        padding: 12px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
